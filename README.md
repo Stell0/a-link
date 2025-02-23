@@ -4,13 +4,13 @@ a-link is a versatile Python application that dynamically executes submodules ba
 
 ## Table of Contents
 
-    Installation (#installation)
-    Usage (#usage)
-    Features (#features)
-    Contributing (#contributing)
-    Testing (#testing)
-    License (#license)
-    Contact & Support (#contact--support)
+Installation (#installation)
+Usage (#usage)
+Features (#features)
+Contributing (#contributing)
+Testing (#testing)
+License (#license)
+Contact & Support (#contact--support)
 
 ## Installation
 Get a-link up and running on your machine with these simple steps.
@@ -23,91 +23,83 @@ Get a-link up and running on your machine with these simple steps.
 
 ### Steps
 
-    Clone the repository:
-    bash
+Clone the repository:
 
+```
 git clone https://github.com/Stell0/a-link.git
 cd a-link
+```
 
 #### Install dependencies:
-Set up a virtual environment (recommended):
-bash
 
+Set up a virtual environment (recommended):
+
+```
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
 Then install the required packages:
-bash
 
-    pip install -r requirements.txt
+```
+pip install -r requirements.txt
+```
 
-    Configure environment variables:
-    Some agents need API keys. Create a .env file in the project root or set them manually:
-        OPENAI_API_KEY: For the trends agent.
-        TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET: For the news agent.
-        Optional: TRENDS_SEARCH_TERMS and NEWS_SEARCH_TERMS as JSON arrays (e.g., ["python", "ai"]).
+Configure environment variables:
+Some agents need API keys. Create a .env file in the project root or set them manually:
+OPENAI_API_KEY: For the trends agent.
+TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET: For the news agent.
+Optional: TRENDS_SEARCH_TERMS and NEWS_SEARCH_TERMS as JSON arrays (e.g., ["python", "ai"]).
 
 ## Usage
-Run a-link by passing a JSON string with the agent name and its parameters via the command line.
-### Basic Command
-bash
 
+Run a-link by passing a JSON string with the agent name and its parameters via the command line.
+
+### Basic Command
+
+```
 python a-link.py '{"agent": "message", "params": {"message": "Hello, World!"}}'
+```
 
 Output: Prints "Hello, World!" to the console and logs the action to stderr.
+
 ### Examples
 
-    Message Agent:
-    bash
+Message Agent:
 
+```
 python a-link.py '{"agent": "message", "params": {"message": "Test message"}}'
-
-    Prints: "Test message"
+```
+Prints: "Test message"
 
 Trends Agent:
-bash
 
+```
 python a-link.py '{"agent": "trends", "params": {"trends_search_terms": ["python", "ai"]}}'
+```
 
-    Uses OpenAI to analyze trends. Falls back to TRENDS_SEARCH_TERMS if unspecified.
+Uses OpenAI to analyze trends. Falls back to TRENDS_SEARCH_TERMS if unspecified.
 
 News Agent:
-bash
+```
+python a-link.py '{"agent": "news", "params": {"news_search_terms": ["technology", "AI"]}}'
+```
 
-    python a-link.py '{"agent": "news", "params": {"news_search_terms": ["technology", "AI"]}}'
-
-        Logs tweets to stderr. Defaults to NEWS_SEARCH_TERMS if not provided.
+Logs tweets to stderr. Defaults to NEWS_SEARCH_TERMS if not provided.
 
 ## Features
 
-    Modular Design: Add new agents by dropping a Python file into the agents folder—implement the Submodule class and you’re set!
-    Dynamic Execution: JSON input dictates which agent runs and how, making tasks endlessly adaptable.
-    API Integration: Seamlessly connects to services like OpenAI and Twitter using environment variables.
-    Logging: Actions and errors are logged to stderr, keeping debugging straightforward.
+Modular Design: Add new agents by dropping a Python file into the agents folder—implement the Submodule class and you’re set!
+Dynamic Execution: JSON input dictates which agent runs and how, making tasks endlessly adaptable.
+API Integration: Seamlessly connects to services like OpenAI and Twitter using environment variables.
+Logging: Actions and errors are logged to stderr, keeping debugging straightforward.
 
 ## Contributing
 
 Love a-link and want to help? We’d love your input!
 
-    Fork the repository.
-    Create a feature branch:
-    bash
+Open a pull request on GitHub.
 
-git checkout -b feature/your-feature-name
-
-Commit your changes:
-bash
-
-git commit -m "Add your message here"
-
-Push to your fork:
-bash
-
-    git push origin feature/your-feature-name
-
-    Open a pull request on GitHub.
-
-Check out CONTRIBUTING.md for more details.
 
 ## Testing
 Verify a-link works as expected with these steps:
